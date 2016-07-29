@@ -7,6 +7,10 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
+  externals: {
+    'VueRouter': 'VueRouter',
+    'mock': 'mock'
+  },
   output: {
     path: config.build.assetsRoot,
     publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,

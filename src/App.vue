@@ -1,17 +1,11 @@
 <template>
   <div class="container">
-    <img class="logo" src="./assets/vuelize.png">
-    <h1 class="title text-center">Vuelize.js</h1>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      msg: 'Hello World!'
-    }
-  }
 }
 </script>
 
@@ -20,4 +14,8 @@ export default {
   .logo
     display: block
     margin: 0 auto
+  svg
+    display: block
+    margin: 0 auto
+    box-shadow: 0 2px 3px hsla(0,0%,7%,.1),0 0 0 1px hsla(0,0%,7%,.1);
 </style>
