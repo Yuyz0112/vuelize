@@ -1,7 +1,12 @@
 'use strict'
 
-import area from './shape/area.js'
+import array from './array'
+import scale from './scale'
+import path from './path'
 
 export default {
-  area
+  max: array.max,
+  min: array.min,
+  scale,
+  path
 }

@@ -17,11 +17,11 @@ class Path {
     if (this._x1 !== null) {
       this._x1 = this._x0
       this._y1 = this._y0
-      this.push('Z')
+      this._.push('Z')
     }
   }
   lineTo (x, y) {
-    this._.push('L', this._x1 = +x, this._y1 = +y)
+    this._.push('L', this._x1 = +x, ',', this._y1 = +y)
   }
   quadraticCurveTo (x1, y1, x, y) {
     this._.push('Q', +x1, ',', +y1, ',', this._x1 = +x, ',', this._y1 = +y)
@@ -46,10 +46,10 @@ class Path {
     if (r < 0) throw new Error('negative radius: ' + r)
 
     if (this._x1 === null) {
-      this._.push('M', this._x1 = x1, this.y1 = y1)
+      this.moveTo(x1, y1)
     } else if (!(l012 > epsilon)) {
     } else if (!(Math.abs(y01 * x21 - y21 * x01) > epsilon) || !r) {
-      this._.push('L', this._x1 = x1, ',', this._y1 = y1)
+      this.lineTo(x1, y1)
     } else {
       const x20 = x2 - x0
       const y20 = y2 - y0
