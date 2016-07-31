@@ -21,6 +21,7 @@ class Scale {
     this._tick = range / domain
   }
   linear (val) {
+    val = +val
     if (val < array.min(this._domain) || val > array.max(this._domain)) throw new Error(`Input value out of domain. Value is ${val}`)
     this.tick()
     val = (val - this._domain[0]) * this._tick + this._range[0]
