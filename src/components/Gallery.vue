@@ -14,7 +14,7 @@ export default {
     return {
       charts: [
         ['Area Chart', 'Bar Chart', 'Line Chart'],
-        ['Group Bar Chart', 'Scatter Plot']
+        ['Group Bar Chart', 'Scatter Plot', 'Donut Chart']
       ]
     }
   },
