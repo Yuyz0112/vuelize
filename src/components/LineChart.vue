@@ -1,5 +1,5 @@
 <template>
-  <h2 class="text-center">Area Chart</h2>
+  <h2 class="text-center">Line Chart</h2>
   <svg
   :width="svgWidth"
   :height="svgHeight">
@@ -82,12 +82,12 @@ export default {
       .domain([0, vuelize.max(arr)])
       .range([this.height, 0])
 
-      path.moveTo(0, this.height)
+      path.moveTo(scaleX.linear(this.data[0][0]), scaleY.linear(this.data[0][1]))
       this.data.forEach(point => path.lineTo(scaleX.linear(point[0]), scaleY.linear(point[1])))
 
-      path.lineTo(scaleX.linear(lastPoint[0]), this.height)
-      path.moveTo(0, this.height)
-      path.closePath()
+      // path.lineTo(scaleX.linear(lastPoint[0]), this.height)
+      // path.moveTo(0, this.height)
+      // path.closePath()
       return path.toString()
     },
     transformXAxis () {
@@ -105,7 +105,7 @@ export default {
 <style scoped lang="sass">
   path
     &.area
-      fill: rgba(151, 254, 224, .5)
+      fill: none
       stroke: #97fee0
       stroke-width: 2
 </style>
