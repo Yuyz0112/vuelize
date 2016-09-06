@@ -5,6 +5,15 @@
   :height="svgHeight">
     <g
     :transform="transform">
+      <path d="M -239.7935922865823, 9.951537484044003
+
+A 240, 240 0 0, 1 -25.080788568417415, -238.68588991556737
+
+L -18.81059142631306, -179.01441743667553
+
+A 180, 180 0 0, 0 -179.84519421493673, 7.463653113033002
+
+Z" style="fill: rgb(208, 116, 60);"></path>
       <path
       :d="path"></path>
     </g>
@@ -13,7 +22,7 @@
 
 <script>
 import mock from 'mock'
-// import vuelize from '../assets/vuelize'
+import vuelize from '../assets/vuelize'
 
 export default {
   data () {
@@ -33,38 +42,20 @@ export default {
   computed: {
     data () {
       const arr = [
-        {
-          desc: '< 40',
-          count: 0
-        },
-        {
-          desc: '40~50',
-          count: 0
-        },
-        {
-          desc: '50~60',
-          count: 0
-        },
-        {
-          desc: '60~70',
-          count: 0
-        },
-        {
-          desc: '>70',
-          count: 0
-        }
+        ['<40', '40-50', '50-60', '60-70', '>=70'],
+        [0, 0, 0, 0, 0]
       ]
       mock.competitiveRank.results.forEach(point => {
         if (point._id < 40) {
-          arr[0].count += point.count
+          arr[1][0] += point.count
         } else if (point._id < 50) {
-          arr[1].count += point.count
+          arr[1][1] += point.count
         } else if (point._id < 60) {
-          arr[2].count += point.count
+          arr[1][2] += point.count
         } else if (point._id < 70) {
-          arr[3].count += point.count
+          arr[1][3] += point.count
         } else {
-          arr[4].count += point.count
+          arr[1][4] += point.count
         }
       })
       return arr
@@ -78,10 +69,12 @@ export default {
       return height
     },
     transform () {
-      return `translate(${this.margin.left},${this.margin.top})`
+      return `translate(${this.svgWidth / 2},${this.svgHeight / 2})`
     },
     path () {
-      console.log(this.data)
+      const pie = vuelize.shape.pie()
+      const data = pie.pie(this.data[1])
+      console.log(data)
     }
   }
 }
